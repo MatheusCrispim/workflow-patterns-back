@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: jony
+Implementation-Version: 0.0.1
+Built-By: johnny
+Implementation-Vendor-Id: io.demo.jony
+Build-Jdk: 1.8.0_201
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/jony
+Created-By: Maven Integration for Eclipse
+
