@@ -7,7 +7,7 @@ import io.demo.jony.jony.enums.TaskState;
 import io.demo.jony.jony.model.Task;
 
 @Service
-public class OpenLogic extends Adapter implements TaskFaseLogic {
+public class OpenLogic extends Adapter implements TaskStateLogic {
 
  	@Override
 	public void doBanking(Task task) throws BusinessException {

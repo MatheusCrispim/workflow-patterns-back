@@ -6,7 +6,7 @@ import io.demo.jony.jony.core.exception.BusinessException;
 import io.demo.jony.jony.model.Task;
 import io.demo.jony.jony.repository.TaskRepository;
 
-public class Adapter implements TaskFaseLogic {
+public class Adapter implements TaskStateLogic {
 	
 	@Autowired
 	TaskRepository taskRepository;

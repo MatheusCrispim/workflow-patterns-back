@@ -4,7 +4,7 @@ import io.demo.jony.jony.core.exception.BusinessException;
 import io.demo.jony.jony.core.workflow.WorkflowLogic;
 import io.demo.jony.jony.model.Task;
 
-public interface TaskFaseLogic extends WorkflowLogic {
+public interface TaskStateLogic extends WorkflowLogic {
 	
 	public void openOffice(Task task) throws BusinessException;
 

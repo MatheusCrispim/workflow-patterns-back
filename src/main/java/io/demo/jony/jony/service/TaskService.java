@@ -16,7 +16,7 @@ import io.demo.jony.jony.service.workflow.task.BankerLogic;
 import io.demo.jony.jony.service.workflow.task.ClosedLogic;
 import io.demo.jony.jony.service.workflow.task.InitialLogic;
 import io.demo.jony.jony.service.workflow.task.OpenLogic;
-import io.demo.jony.jony.service.workflow.task.TaskFaseLogic;
+import io.demo.jony.jony.service.workflow.task.TaskStateLogic;
 
 /**
  * CRUD service of the model: Task.
@@ -32,7 +32,7 @@ public class TaskService extends CrudService<Task, Integer> {
 	@Autowired
 	private TaskRepository repository;
 	
-	private final WorkflowService<Task, TaskState, TaskStateAction, TaskFaseLogic> workflowService = new WorkflowService<Task, TaskState, TaskStateAction, TaskFaseLogic>();
+	private final WorkflowService<Task, TaskState, TaskStateAction, TaskStateLogic> workflowService = new WorkflowService<Task, TaskState, TaskStateAction, TaskStateLogic>();
 
 	@Autowired
 	private InitialLogic initialLogic;
