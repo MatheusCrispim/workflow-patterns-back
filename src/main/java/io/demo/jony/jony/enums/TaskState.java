@@ -7,7 +7,7 @@ package io.demo.jony.jony.enums;
  */
 public enum TaskState {
 
-	initial("Initial"), open("Open"), banker("Banker"), closed("Closed");
+	initial("Initial"), opened("Opened"), banked("Banked"), closed("Closed");
 
 	private String descricao;
 
