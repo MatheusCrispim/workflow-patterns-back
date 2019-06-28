@@ -2,6 +2,7 @@ package io.demo.jony.jony.dto;
 
 import io.demo.jony.jony.core.dto.ModelDTO;
 import io.demo.jony.jony.enums.TaskState;
+import io.demo.jony.jony.enums.TaskStateAction;
 
 /**
  * DTO for Model: Task.
@@ -21,6 +22,8 @@ public class TaskDTO extends ModelDTO {
 	 * State.
 	 */
 	private TaskState taskState;
+	
+	private TaskStateAction taskStateAction;
 
 	public TaskDTO() {
 	}
@@ -67,6 +70,14 @@ public class TaskDTO extends ModelDTO {
 	 */
 	public void setTaskState(TaskState taskState) {
 		this.taskState = taskState;
+	}
+
+	public TaskStateAction getTaskStateAction() {
+		return taskStateAction;
+	}
+
+	public void setTaskStateAction(TaskStateAction taskStateAction) {
+		this.taskStateAction = taskStateAction;
 	}
 
 }
