@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import io.demo.jony.jony.core.exception.BusinessException;
-import io.demo.jony.jony.core.security.SecurityService;
 import io.demo.jony.jony.core.service.CrudService;
 import io.demo.jony.jony.core.workflow.WorkflowService;
 import io.demo.jony.jony.enums.TaskState;
@@ -33,7 +32,8 @@ public class TaskService extends CrudService<Task, Integer> {
 	@Autowired
 	private TaskRepository repository;
 	
-	private final WorkflowService<Task, TaskState, TaskStateAction, TaskStateLogic> workflowService = new WorkflowService<Task, TaskState, TaskStateAction, TaskStateLogic>();
+	@Autowired
+	private WorkflowService<Task, TaskState, TaskStateAction, TaskStateLogic> workflowService;
 
 	@Autowired
 	private InitialLogic initialLogic;
@@ -47,16 +47,12 @@ public class TaskService extends CrudService<Task, Integer> {
 	@Autowired
 	private ClosedLogic closedLogic;
 	
-	@Autowired
-	private SecurityService securityService;
-	
 	@PostConstruct
 	public void init() {
 		workflowService.map(TaskState.initial, initialLogic);
 		workflowService.map(TaskState.opened, openedLogic);
 		workflowService.map(TaskState.banked, bankedLogic);
 		workflowService.map(TaskState.closed, closedLogic);
-		workflowService.setSecurityService(securityService);
 	}
 	
 	@Override

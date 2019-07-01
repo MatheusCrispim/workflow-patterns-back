@@ -5,18 +5,22 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.stereotype.Component;
 
 import io.demo.jony.jony.core.exception.BusinessException;
 import io.demo.jony.jony.core.model.Model;
 import io.demo.jony.jony.core.security.SecurityService;
 import io.demo.jony.jony.core.service.BaseService;
 
+@Component
 public class WorkflowService<E extends Model<?>, F extends Enum<?>, A extends Enum<?>, L extends WorkflowLogic>
 		extends BaseService {
 
 	private final Map<F, L> logics = new HashMap<F, L>();
 	
+	@Autowired
 	private SecurityService securityService;
 
 	public void map(F stateField, L logic) {
