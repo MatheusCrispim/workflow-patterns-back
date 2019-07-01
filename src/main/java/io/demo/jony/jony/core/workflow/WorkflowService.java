@@ -25,12 +25,24 @@ public class WorkflowService<E extends Model<?>, F extends Enum<?>, A extends En
 		L logic = logics.get(sourceState);
 		try {
 			method = logic.getClass().getMethod(action.toString(), entity.getClass());
+			UsersAllowed usersAllowed = method.getAnnotation(UsersAllowed.class);
+			if (usersAllowed != null && !isAllowed(getCurrentLogin(), usersAllowed.value())) {
+				throw new BusinessException("Usuario nao pode relizar essa acao");
+			}
 			method.invoke(logic, entity);
 		} catch (InvocationTargetException e) {
 			throw (BusinessException) e.getTargetException();
 		} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException e) {
 			throw new BusinessException("Erro desconhecido", LocaleContextHolder.getLocale(), e);
 		}
+	}
+
+	private boolean isAllowed(String loginUser, String[] loginsAutorizados) {
+		for (String login : loginsAutorizados) {
+			if (login.equals(loginUser))
+				return true;
+		}
+		return false;
 	}
 
 }
