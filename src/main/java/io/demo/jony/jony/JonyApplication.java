@@ -20,7 +20,6 @@ public class JonyApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(JonyApplication.class, args);
-
 		AppContext.loadApplicationContext(ctx);
 	}
 }
