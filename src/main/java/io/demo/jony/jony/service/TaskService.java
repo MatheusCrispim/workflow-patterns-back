@@ -12,10 +12,10 @@ import io.demo.jony.jony.enums.TaskState;
 import io.demo.jony.jony.enums.TaskStateAction;
 import io.demo.jony.jony.model.Task;
 import io.demo.jony.jony.repository.TaskRepository;
-import io.demo.jony.jony.service.workflow.task.BankerLogic;
+import io.demo.jony.jony.service.workflow.task.BankedLogic;
 import io.demo.jony.jony.service.workflow.task.ClosedLogic;
 import io.demo.jony.jony.service.workflow.task.InitialLogic;
-import io.demo.jony.jony.service.workflow.task.OpenLogic;
+import io.demo.jony.jony.service.workflow.task.OpenedLogic;
 import io.demo.jony.jony.service.workflow.task.TaskStateLogic;
 
 /**
@@ -38,10 +38,10 @@ public class TaskService extends CrudService<Task, Integer> {
 	private InitialLogic initialLogic;
 	
 	@Autowired
-	private OpenLogic openedLogic;
+	private OpenedLogic openedLogic;
 	
 	@Autowired
-	private BankerLogic bankedLogic;
+	private BankedLogic bankedLogic;
 	
 	@Autowired
 	private ClosedLogic closedLogic;

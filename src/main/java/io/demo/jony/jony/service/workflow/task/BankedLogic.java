@@ -7,13 +7,13 @@ import io.demo.jony.jony.enums.TaskState;
 import io.demo.jony.jony.model.Task;
 
 @Service
-public class OpenLogic extends Adapter implements TaskStateLogic {
+public class BankedLogic extends Adapter implements TaskStateLogic {
 
  	@Override
-	public void doBanking(Task task) throws BusinessException {
-		task.setTaskState(TaskState.banked);
+	public void closeOffice(Task task) throws BusinessException {
+		task.setTaskState(TaskState.closed);
 		taskRepository.save(task);
 		return;
 	}
 
-}
+ } 
