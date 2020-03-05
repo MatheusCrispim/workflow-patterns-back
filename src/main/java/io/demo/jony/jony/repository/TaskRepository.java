@@ -9,5 +9,4 @@ import io.demo.jony.jony.model.Task;
  * @author Virtus
  */
 public interface TaskRepository extends CrudBaseRepository<Task, Integer> {
-
 }

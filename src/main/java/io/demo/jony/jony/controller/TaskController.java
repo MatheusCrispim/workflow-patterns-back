@@ -1,8 +1,10 @@
 package io.demo.jony.jony.controller;
 
+
+import io.demo.jony.jony.core.util.NullAwareBeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import io.demo.jony.jony.core.api.ApiVersion;
 import io.demo.jony.jony.core.api.ApiVersions;
@@ -12,6 +14,8 @@ import io.demo.jony.jony.dto.TaskDTO;
 import io.demo.jony.jony.model.Task;
 import io.demo.jony.jony.service.TaskService;
 import io.swagger.annotations.Api;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * CRUD Controller for the model: Task.
@@ -39,6 +43,17 @@ public class TaskController extends CrudBaseController<Task, Integer, TaskDTO> {
 	@Override
 	protected TaskService getService() {
 		return service;
+	}
+
+	@Override
+	public ResponseEntity<TaskDTO> updatePartial(HttpServletRequest request, @PathVariable Integer id,
+												 @RequestBody TaskDTO modelDTO) throws Exception {
+
+		Task model = toModel(modelDTO);
+		Task dbModel = getService().getOne(id);
+		NullAwareBeanUtils.getInstance().copyProperties(dbModel, model);
+	  	getService().assignTaskToUser(id, model.getAssignedUser());
+		return ok(modelDTO);
 	}
 
 }

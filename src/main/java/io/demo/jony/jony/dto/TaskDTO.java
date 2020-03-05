@@ -1,7 +1,9 @@
 package io.demo.jony.jony.dto;
 
 import io.demo.jony.jony.core.dto.ModelDTO;
+import io.demo.jony.jony.enums.TaskAction;
 import io.demo.jony.jony.enums.TaskState;
+import io.demo.jony.jony.model.User;
 
 /**
  * DTO for Model: Task.
@@ -21,6 +23,17 @@ public class TaskDTO extends ModelDTO {
 	 * State.
 	 */
 	private TaskState taskState;
+
+	/**
+	 * State.
+	 */
+	private TaskAction taskAction;
+
+	/**
+	 * User.
+	 */
+	private UserDTO assignedUser;
+
 
 	public TaskDTO() {
 	}
@@ -51,6 +64,25 @@ public class TaskDTO extends ModelDTO {
 		return taskState;
 	}
 
+
+	/**
+	 * Gets the taskAction.
+	 *
+	 * @return taskAction.
+	 */
+	public TaskAction getTaskAction() {
+		return taskAction;
+	}
+
+	/**
+	 * Gets the assignedUser.
+	 *
+	 * @return assignedUser.
+	 */
+	public UserDTO getAssignedUser() {
+		return assignedUser;
+	}
+
 	/**
 	 * Sets the date.
 	 *
@@ -67,6 +99,24 @@ public class TaskDTO extends ModelDTO {
 	 */
 	public void setTaskState(TaskState taskState) {
 		this.taskState = taskState;
+	}
+
+	/**
+	 * Sets the taskAction.
+	 *
+	 * @param name taskAction.
+	 */
+	public void setTaskAction(TaskAction taskAction){
+		this.taskAction = taskAction;
+	}
+
+	/**
+	 * Sets the assignedUser.
+	 *
+	 * @param name assignedUser.
+	 */
+	public void setAssignedUser(UserDTO assignedUser){
+		this.assignedUser = assignedUser;
 	}
 
 }

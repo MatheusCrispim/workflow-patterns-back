@@ -1,10 +1,6 @@
 package io.demo.jony.jony.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
@@ -43,6 +39,12 @@ public class Task extends Model<Integer> {
 	private TaskState taskState;
 
 	/**
+	 * User
+	 */
+	@ManyToOne
+	private User assignedUser;
+
+	/**
 	 * If it is deleted.
 	 */
 	@Column(name = "deleted")
@@ -70,6 +72,15 @@ public class Task extends Model<Integer> {
 	}
 
 	/**
+	 * Gets the assignedUser.
+	 *
+	 * @return assignedUser.
+	 */
+	public User getAssignedUser() {
+		return assignedUser;
+	}
+
+	/**
 	 * Sets the date.
 	 *
 	 * @param name date.
@@ -86,6 +97,16 @@ public class Task extends Model<Integer> {
 	public void setTaskState(TaskState taskState) {
 		this.taskState = taskState;
 	}
+
+	/**
+	 * Sets the assignedUser.
+	 *
+	 * @param name assignedUser.
+	 */
+	public void setAssignedUser(User assignedUser) {
+		this.assignedUser = assignedUser;
+	}
+
 
 	/**
 	 * Gets if it is deleted.
