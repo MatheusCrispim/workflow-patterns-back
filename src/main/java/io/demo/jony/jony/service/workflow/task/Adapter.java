@@ -13,7 +13,7 @@ public class Adapter implements TaskLogic{
     @Autowired TaskRepository taskRepository;
 
     @Override
-    public void assignTaskToUser(Task task, User user) throws BusinessException{
+    public void offerTaskToUser(Task task, User user) throws BusinessException{
         throw new BusinessException("Nao foi possivel atribuir a atividade ao usuario");
     }
 

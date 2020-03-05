@@ -1,7 +1,7 @@
 package io.demo.jony.jony.enums;
 
 public enum TaskLogic {
-    assignTask("AssignTasks"), getTasks("GetTasks");
+    offerTask("OfferTask"), getTasks("GetTasks");
 
     private String description;
 

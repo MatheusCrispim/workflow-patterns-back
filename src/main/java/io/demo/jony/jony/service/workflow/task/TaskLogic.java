@@ -10,7 +10,7 @@ import io.demo.jony.jony.model.User;
 
 public interface TaskLogic extends WorkflowLogic {
 
-    public void assignTaskToUser(Task task, User user) throws BusinessException;
+    public void offerTaskToUser(Task task, User user) throws BusinessException;
 
     public PageListDTO getUserTasks(SearchFilterDTO filter, User user) throws BusinessException;
 

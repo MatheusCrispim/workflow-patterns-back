@@ -8,7 +8,7 @@ import io.demo.jony.jony.enums.TaskAction;
 import io.demo.jony.jony.enums.TaskLogic;
 import io.demo.jony.jony.model.User;
 import io.demo.jony.jony.core.workflow.WorkflowService;
-import io.demo.jony.jony.service.workflow.task.AssignTaskLogic;
+import io.demo.jony.jony.service.workflow.task.OfferTaskLogic;
 import io.demo.jony.jony.service.workflow.task.GetTaskLogic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,7 +40,7 @@ public class TaskService extends CrudService<Task, Integer> {
 	private WorkflowService<Object, TaskAction, TaskLogic, WorkflowLogic> workflowService;
 
 	 @Autowired
-	 private AssignTaskLogic assignTaskLogic;
+	 private OfferTaskLogic offerTaskLogic;
 
 	 @Autowired
 	 private GetTaskLogic getTaskLogic;
@@ -57,7 +57,7 @@ public class TaskService extends CrudService<Task, Integer> {
 
 	@PostConstruct
 	public void init() {
-		workflowService.map(TaskLogic.assignTask, assignTaskLogic);
+		workflowService.map(TaskLogic.offerTask, offerTaskLogic);
 		workflowService.map(TaskLogic.getTasks, getTaskLogic);
 	}
 
@@ -69,7 +69,7 @@ public class TaskService extends CrudService<Task, Integer> {
 
 	public void assignTaskToUser(Integer taskId, User user) throws BusinessException {
 		Task task = getOne(taskId);
-		workflowService.action(TaskAction.assignTaskToUser,  TaskLogic.assignTask, task, user);
+		workflowService.action(TaskAction.offerTaskToUser,  TaskLogic.offerTask, task, user);
 	}
 
 	@Override

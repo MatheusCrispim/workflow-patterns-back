@@ -2,7 +2,7 @@ package io.demo.jony.jony.enums;
 
 public enum  TaskAction {
 
-    assignTaskToUser("AssignTaskToUser"), getUserTasks("GetUserTasks");
+    offerTaskToUser("offerTaskToUser"), getUserTasks("GetUserTasks");
 
     private String description;
 
