@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import io.demo.jony.jony.core.exception.BusinessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -85,7 +86,7 @@ public abstract class SearchBaseController<M extends Model<T>, T extends Seriali
     @ApiOperation(value = "View a list of items filtered by the filter param")
     @GetMapping(params = {"filter"})
     @ReadPermission
-	public ResponseEntity<ModelDTO> search(HttpServletRequest request, @RequestParam("filter") String filterJSon) {
+	public ResponseEntity<ModelDTO> search(HttpServletRequest request, @RequestParam("filter") String filterJSon) throws BusinessException {
 		SearchFilterDTO filter = JSonUtil.fromJSon(filterJSon, SearchFilterDTO.class);
 		filter = customSearchFilter(request, filter);
 		

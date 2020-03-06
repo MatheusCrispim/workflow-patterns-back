@@ -72,13 +72,10 @@ public class TaskService extends CrudService<Task, Integer> {
 		workflowService.action(TaskAction.offerTaskToUser,  TaskLogic.offerTask, task, user);
 	}
 
-	@Override
-	public PageListDTO search(SearchFilterDTO filter) {
-		try {
-			return (PageListDTO) workflowService.action(TaskAction.getUserTasks, TaskLogic.getTasks, filter,  userService.getOne(getCurrentUserId()));
-		} catch (BusinessException e) {
-			return super.search(filter);
-		}
+
+	public PageListDTO getUserTask(SearchFilterDTO filter) throws BusinessException {
+		User user = userService.getOne(getCurrentUserId());
+		return (PageListDTO) workflowService.action(TaskAction.getUserTasks, TaskLogic.getTasks, filter, user);
 	}
 
 }
