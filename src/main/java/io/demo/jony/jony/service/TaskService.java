@@ -73,7 +73,7 @@ public class TaskService extends CrudService<Task, Integer> {
 	}
 
 
-	public PageListDTO getUserTask(SearchFilterDTO filter) throws BusinessException {
+	public PageListDTO getUserTasks(SearchFilterDTO filter) throws BusinessException {
 		User user = userService.getOne(getCurrentUserId());
 		return (PageListDTO) workflowService.action(TaskAction.getUserTasks, TaskLogic.getTasks, filter, user);
 	}

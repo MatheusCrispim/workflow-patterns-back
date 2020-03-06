@@ -67,7 +67,7 @@ public class TaskController extends CrudBaseController<Task, Integer, TaskDTO> {
 		SearchFilterDTO filter = JSonUtil.fromJSon(filterJSon, SearchFilterDTO.class);
 		filter = customSearchFilter(request, filter);
 
-		PageListDTO response = getService().getUserTask(filter);
+		PageListDTO response = getService().getUserTasks(filter);
 		response.setItems(toSearchListDTO(response.getItems()));
 
 		return new ResponseEntity<>(response, HttpStatus.OK);
